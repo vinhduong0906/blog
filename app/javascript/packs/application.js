@@ -2,8 +2,11 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-//= require jquery3
+//= require jquery
 //= require jquery_ujs
+//= require rails-ujs
+//= require bootstrap.min
+//= require jquery.turbolinks
 //= require_tree .
 require("@rails/ujs").start()
 require("turbolinks").start()
@@ -18,10 +21,4 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-$(document).ready(function() {
-  $('[data-js-hide-link]').click(function(event){
-    console.log("ok");
-    alert('You clicked the Hide link');
-    event.preventDefault(); 
-  });
-})
+import "bootstrap"
