@@ -1,4 +1,25 @@
-<h1>Display the articles</h1>
-<p><strong>Title: </strong><%=@article.title%></p>
-<p><strong>Description: </strong><%=@article.description%></p>
+<div class="text-center mt-5">
+  <h1><%= @article.title %></h1>
+</div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-10 mt-4"> 
+      <div class="card mb-3 text-center shadow-lg bg-white rounded" style="max-width: 55rem;">
+        <div class="card-header bg-light border-secondary">Header</div>
+        <div class="card-body text-success">
+          <p class="card-text"><%= @article.description %></p>
+          <div>
+            <%= link_to "Edit", edit_article_path(@article), :class =>"btn btn-outline-info"%>
+            <%= link_to "Delete", article_path(@article), :class =>"btn btn-outline-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+          </div>
+        </div>
+        <div class="card-footer bg-light border-secondary">
+          <small>Created about <%= time_ago_in_words(@article.created_at) %> ago,
+          Updated about <%= time_ago_in_words(@article.updated_at) %> ago
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>        
 <p><%= link_to "Back",articles_path %></p>
