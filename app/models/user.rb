@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :articles
   has_secure_password
   has_one_attached :image
+
+  validates :image, presence: true
   validates :username, presence: true, 
                        length: {minimum: 3, maximum: 25}, 
                        uniqueness: true
