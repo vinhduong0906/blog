@@ -1,11 +1,11 @@
-<div class="text-center mt-5">
+<div class="text-center mt-5 title">
   <h1><%= @article.title %></h1>
 </div>
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-10 mt-4"> 
       <div class="card mb-3 text-center shadow-lg bg-white rounded" style="max-width: 55rem;">
-        <div class="card-header bg-light border-secondary">Header</div>
+        <div class="card-header bg-light border-secondary"><%= @article.user.username if @article.user %></div>
         <div class="card-body text-success">
           <p class="card-text"><%= @article.description %></p>
           <div>

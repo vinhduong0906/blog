@@ -10,12 +10,13 @@ class ArticlesController < ApplicationController
   end
   def create
     @article = Article.new(article_params)
-      if @article.save
-        flash[:notice]="Create article was suscessfull."
-        redirect_to(@article)
-      else
-        render :new
-      end
+    @article.user_id=session[:user_id]
+    if @article.save
+      flash[:notice]="Create article was suscessfull."
+      redirect_to(@article)
+    else
+      render :new
+    end
   end
   def edit
   end

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-10 mt-4"> 
-      <%= render "layouts/errors" %>
+      <%= render "layouts/errors", obj: @article %>
       <%= form_with(model: @article, local: true,:class=>"form-group row bg-info ")  do |f| %>
       
           <%= f.label :title, :class=>"col-sm-2 col-form-label" %>
@@ -16,11 +16,11 @@
             <%= f.text_area :description,:class=>"form-control" %>
           </div>
         
-          <%= f.submit :class=>"btn btn-primary mb-2 center"%>
+          <%= f.submit :class=>"btn btn-primary mb-2 center btn-outline-white"%>
       <% end %>
     </div>
   </div>
 </div>        
-<div class="mb-3">
+<div class="mb-3 text-center">
       <%= link_to '[ Cancel and return to articles listing ]', articles_path, class: "text-info" %>
     </div>

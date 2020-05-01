@@ -34,6 +34,7 @@ html,
 body {
   height: 100%;
   background-color: lightgray !important;
+  color: white !important;
 }
 #page-content {
   flex: 1 0 auto;  
@@ -59,4 +60,25 @@ textarea.form-control {
 }
 .container{
   margin-bottom: 0 !important;
+}
+.btn-outline-white {
+  background-color: transparent !important;
+  color: white;
+  border-color: white;
+}
+.title {
+  color: black;
+}
+.alert {
+  display: block !important
+}
+.profile-image {
+  width: 200px;
+  height: auto;
+}
+a.btn {
+  margin-top: 1em;
+}
+.card-header, .card-footer {
+  color: darkslategray;
 }
