@@ -1,5 +1,6 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+/* navbar styling */
 .navbar {
   background-color: #FDF6EA !important;
   background-color: black !important;
@@ -8,7 +9,11 @@
 .nav-link {
   color: white !important;
 }
-
+.btn-outline-white {
+  background-color: transparent !important;
+  color: white;
+  border-color: white;
+}
 #logo {
   float: left;
   font-size: 1.7em;
@@ -17,7 +22,21 @@
   letter-spacing: -1px;
   font-weight: bold;
 }
-
+a.btn.login-btn {
+  margin-right: 0.5rem;
+}
+.menu-profile-image {
+  width: 40px;
+  height: 40px;
+}
+.profile-img{
+  border-radius: 0.25rem ;
+}
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
 #home-container {
   margin-top: 25px;
 }
@@ -34,16 +53,14 @@ html,
 body {
   height: 100%;
   background-color: lightgray !important;
-  color: white !important;
 }
 #page-content {
   flex: 1 0 auto;  
   background-color: lightgray !important ;
+  color: #252729;
 }
 
-#sticky-footer {
-  flex-shrink: none;
-}
+
 
 .border-secondary {
   border-color: lightgray !important;
@@ -76,9 +93,199 @@ textarea.form-control {
   width: 200px;
   height: auto;
 }
-a.btn {
-  margin-top: 1em;
+
+
+.btn.disable{
+  background: #999;
+  color: #555;
+  cursor: not-allowed;
 }
-.card-header, .card-footer {
-  color: darkslategray;
+.w-64 {
+  width: 64% ;
+}
+.input-group > .form-control:not(:last-child), .input-group > .custom-select:not(:last-child) {
+  border-top-right-radius: 0.25rem !important;
+  border-bottom-right-radius: 0.25rem !important;
+}
+
+.menu-profile-image::after {
+  display: none !important;
+}
+#sticky-footer {
+  flex-shrink: none;
+}
+
+/* pagination styling */
+
+.flickr_pagination {
+  text-align: center;
+  padding: 0.3em;
+  cursor: default; }
+  .flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
+    padding: 0.2em 0.5em;
+    border-radius: 5px;
+   }
+  .flickr_pagination .disabled {
+    color: #aaaaaa; }
+  .flickr_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    color: #ff0084; }
+  .flickr_pagination a {
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    text-decoration: none; }
+    .flickr_pagination a:hover, .flickr_pagination a:focus {
+      border-color: gray;
+      background: whitesmoke;
+      color: gray; }
+  .flickr_pagination .page_info {
+    color: #aaaaaa;
+    padding-top: 0.8em; }
+  .flickr_pagination .previous_page, .flickr_pagination .next_page {
+    border-width: 2px; }
+  .flickr_pagination .previous_page {
+    margin-right: 1em; }
+  .flickr_pagination .next_page {
+    margin-left: 1em; } 
+.grid-layout {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+/* categories styling */
+.category-info {
+  border-color: #8c8c8cba;
+  border-style: solid;
+  border-radius: 0.2rem;
+  border-width: thin;
+  padding: 3px 5px;
+}
+.category-name a:hover, .card-title a:hover, .user-name a:hover {
+  background: none;
+  text-decoration: none;
+  color:#0095ff;
+}
+.category-name a, .card-title a, .user-name a{
+  color: #0277cc ;
+}
+/* Search category styling */
+/* Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+/* The search field */
+#search-category {
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+/* The search field when it gets focus/clicked on */
+#search-category:focus {outline: 3px solid #ddd;}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+.select-category .dropdown-menu{
+  left: -1px !important;
+}
+.select-category input:focus {
+  outline: none !important;
+}
+.select-category li {
+  margin: 5px 0 5px 5px;
+}
+/* Article card styling */
+.card-title{
+  margin: 1rem;
+}
+.category-article a, .category-info {
+  color: #39739d;
+  background-color: #e1ecf4;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 3px;
+}
+.category-article a:hover, .category-info a:hover::before {
+  background-color: #d1e5f1;
+  color: #2c5777;
+  text-decoration: none;
+}
+.user-gravatar32 {
+  float: left;
+  width: 32px;
+  height: 32px;
+}
+.article-details{
+  float: left;
+  font-size: 12px;
+  padding-left: 3px;
+}
+.card-body{
+  padding-top: 0;
+}
+.edit-article a.btn {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.edit-article {
+  margin-top: 5px;
+  margin-left: 15px;
+}
+/* user index page styling */
+.user-details {
+  margin-left: 35px;
+}
+.user-info {
+  background: white;
+  padding: 5px;
+}
+/* category show page styling */
+.article-edit-time {
+  margin-top: 5px;
+}
+.category-article {
+  margin-bottom: 3px;
 }

@@ -1,10 +1,8 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-10 mt-4"> 
-      <%= render "layouts/errors", obj: @user %>
-      
+      <%= render "shared/errors", obj: @user %>
       <%= form_with(model: @user, local: true, :class=>"form-group row bg-info ") do |form| %>
-          
           <div class="col-sm-2 col-form-label">
             <%= form.label :username %>
           </div>
@@ -27,9 +25,13 @@
             <%= form.label :password %>    
           </div>      
           <div class="col-sm-10 ">
-            <%= form.password_field :password_digest, :class=>"form-control" %>
+            <%= form.password_field :password, :class=>"form-control" %>
           </div> 
-          <%= form.submit "Sign up", :class=>" btn btn-primary mb-2 center btn-outline-white" %>      
+          <% if logged_in? %>
+            <%= form.submit  "Update" , :class=>" btn btn-primary mb-2 center btn-outline-white" %>
+          <% else %> 
+            <%= form.submit  "Sign up" , :class=>" btn btn-primary mb-2 center btn-outline-white" %>  
+          <% end %>   
       <% end %>
     </div>
   </div>

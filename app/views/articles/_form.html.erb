@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-10 mt-4"> 
-      <%= render "layouts/errors", obj: @article %>
+      <%= render "shared/errors", obj: @article %>
       <%= form_with(model: @article, local: true,:class=>"form-group row bg-info ")  do |f| %>
       
           <%= f.label :title, :class=>"col-sm-2 col-form-label" %>
@@ -13,14 +13,37 @@
         
           <%= f.label :description, :class=>"col-sm-2 col-form-label"%>
           <div class="col-sm-10">
-            <%= f.text_area :description,:class=>"form-control" %>
+            <%= f.text_area :description,:class=>"form-control tinymce" %>
+            <%= tinymce %>
           </div>
-        
-          <%= f.submit :class=>"btn btn-primary mb-2 center btn-outline-white"%>
-      <% end %>
+          <%= f.label :category, :class=>"col-sm-2 col-form-label"%>
+          <div class="col-sm-10">
+          <div class=" dropdown select-category">
+            <a class=" dropdown-toggle btn btn-primary mb-2 btn-outline-white " href="#" id="selectCategoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select Category
+            </a>
+            <div class="dropdown-menu scrollable-menu" >
+              <input type="text" placeholder="Search.." id="search-category" >    
+              
+              <% @categories.each do |category| %>
+                <li>
+                  <%= check_box_tag 'category_id[]', category.id, (checked = true if @category_of_articles and @category_of_articles.include?(category) ) %>
+                  <%= h category.name %>
+                </li>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+          <%= f.submit :class=>"btn btn-primary mb-2 center btn-outline-white", id:"create-article"%>
+        </div>
+          <% end %>
     </div>
   </div>
 </div>        
 <div class="mb-3 text-center">
       <%= link_to '[ Cancel and return to articles listing ]', articles_path, class: "text-info" %>
     </div>
+#WYSIWYG editors 
+

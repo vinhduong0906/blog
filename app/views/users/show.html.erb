@@ -3,8 +3,13 @@
   <h3><%= @user.username %>'s Profile</h3>
 </div>
 <div class="profile-image center">
-  <%= image_tag(@user.image, style: 'width: 100%') %>
+  <%= image_tag(@user.image  , style: 'width: 100%') if @user.image.attached?%>
 </div>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<div class="text-center mt-5 title">
+  <h3>Articles</h3>
+</div>
+<%=render 'articles/article-card'%>
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
 <%= link_to 'Back', users_path %>

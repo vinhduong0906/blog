@@ -7,7 +7,10 @@
 //= require rails-ujs
 //= require bootstrap.min
 //= require jquery.turbolinks
+//= require tinymce above 
+//= require tinymce-jquery
 //= require_tree .
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -22,3 +25,29 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "bootstrap"
+
+$(document).ready(function() {
+  $('#dialog_form').hide();
+    $("#search-category").keyup(function (event) {
+      var categories, category, i, filter;
+      filter=$('#search-category').val().toUpperCase();
+      
+      categories=$('.select-category li').get();
+      for (i = 0; i < categories.length; i++) {
+        category=categories[i].innerText.trim().toUpperCase();
+        if (category.indexOf(filter)>-1)
+      {
+        categories[i].style.display="block";
+      }
+      else
+      categories[i].style.display="none";
+      }
+        event.preventDefault();
+    });
+    
+    $('#delete-profile').click(function() {
+      var user=this.getAttribute("data-myvalue");
+      $('#dialog-form').html('<% escape_javascript(:locals => {:user_id=>user})%>');
+        
+  });
+});

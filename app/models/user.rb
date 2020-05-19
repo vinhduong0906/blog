@@ -1,7 +1,7 @@
 include BCrypt
 class User < ApplicationRecord
   before_save {self.email=email.downcase}
-  before_save {self.password_digest=BCrypt::Password.create(password_digest)}
+  
   has_many :articles
   has_secure_password
   has_one_attached :image
@@ -10,9 +10,13 @@ class User < ApplicationRecord
   validates :username, presence: true, 
                        length: {minimum: 3, maximum: 25}, 
                        uniqueness: true
-  validates :email, presence: true, 
-                    length: {maximum: 105}, 
-                    uniqueness: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :email, presence: true, length: { maximum: 105 },
+  
+  uniqueness: { case_sensitive: false },
+  
+  format: { with: VALID_EMAIL_REGEX }
   
 
 end

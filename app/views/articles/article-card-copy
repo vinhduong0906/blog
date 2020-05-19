@@ -1,0 +1,35 @@
+<% @articles.each do |article| %>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-10 mt-4"> 
+        <div class="card border-0 mb-3 shadow-lg bg-white rounded" >
+        <% if !@in_article_show %>  
+          <div class="card-header bg-light border-secondary">
+            <h5 class="card-title"><%= article.title %></h5>
+            <h5><%#= link_to article.user.username, user_path(article.user) unless article.user.blank? %>
+            </h5>
+          </div>
+        <% end %>
+          <div class="card-body text-success">
+            <% if !@in_article_show %>
+              <%= truncate article.description, length: 300, :escape => false %>
+              
+            <% else %>
+              <p class="card-text"><%= article.description.html_safe %></p>
+            <% end %>
+            <div>
+                <%= link_to "Edit", edit_article_path(article), :class =>"btn btn-outline-info"%>
+                <%= link_to "Delete", article_path(article), :class =>"btn btn-outline-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+              
+              </div>
+          </div>
+          <div class="card-footer bg-light border-secondary">
+            <small>Created about <%= time_ago_in_words(article.created_at) %> ago,
+            Updated about <%= time_ago_in_words(article.updated_at) %> ago
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

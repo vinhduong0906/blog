@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <% @articles.each do |article| %>
+      <div class=" col-10 mt-4"> 
+        <div class="card border-0 mb-3 shadow-lg bg-white rounded" >
+          <div class="card-title">  
+            <h4><%=link_to article.title, article_path(article) %></h4>
+          </div>
+          <div class="card-body row ">
+            <div class="col-sm-8">
+              <%= truncate article.description, length: 300, :escape => false %>
+              <div class="category-article">
+                <% article.categories.each do |category| %>
+                  <%= link_to category.name, category_path(category) %> 
+                <% end%>
+              </div>
+            </div>
+            <div class="col-sm-4 user-info">
+              <div class="user-name">
+                <%= link_to article.user.username, user_path(article.user) unless article.user.blank? %>
+              </div>  
+            
+              <div class= "user-gravatar32">
+                <%= image_tag(article.user.image, style: "width:100%; height: 100%") if article.user %>
+              </div>    
+              <div class= "article-details">
+                Created <%= time_ago_in_words(article.created_at) %> ago </br>
+                Last updated <%= time_ago_in_words(article.updated_at) %> ago
+              </div>
+            </div>
+            <% if logged_in? and (current_user==article.user or current_user.admin) %>
+              <div class="edit-article"> 
+                <%= link_to "Edit", edit_article_path(article), :class =>"btn btn-info"%>
+                <%= link_to "Delete", article_path(article), :class =>"btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

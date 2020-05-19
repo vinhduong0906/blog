@@ -1,0 +1,24 @@
+<h1 align="center">Listing All Categories</h1>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-10 mt-4"> 
+      <div id="categories">
+        <div class="grid-layout  center">
+          <% @categories.each do |category| %>
+            <div class="category-info">
+              <div class="category-name">
+                <h4><%= link_to "#{category.name}", category_path(category) %></h4>
+              <div class="category-name">
+                <%= pluralize(category.articles.count, "article") %>
+              </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
