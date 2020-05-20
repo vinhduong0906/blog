@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'byebug'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)

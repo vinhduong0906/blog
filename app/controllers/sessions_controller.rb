@@ -1,4 +1,4 @@
-require 'byebug'
+
 class SessionsController < ApplicationController
   
   def new
