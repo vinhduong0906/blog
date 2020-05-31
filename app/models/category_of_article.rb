@@ -1,0 +1,3 @@
+class CategoryOfArticle < ApplicationRecord
+  
+end

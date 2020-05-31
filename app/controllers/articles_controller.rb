@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
       if @article.save
         @category_id.each do |category_id|
           @category=Category.find(category_id)
-          @article.category_of_articles.create(category: @category)
+          @article.categories <<@category
         end
         flash[:notice]="Create article was suscessfull."
         redirect_to(@article)
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
       @article.errors.add(:base, "Category can not be blank")
       render :new
     end
-  
+
   end
   def edit
     @category_of_articles=@article.categories
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
       end
       flash[:notice]="Update article was suscessfull."
       redirect_to(@article)
-    else 
+    else
       render :edit
     end
   else

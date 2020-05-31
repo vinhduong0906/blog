@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :users
   resources :articles
+  resources :category_of_articles
   resources :categories, except: [:destroy]
   root 'pages#home'
   get 'about', to: 'pages#about'
