@@ -55,9 +55,9 @@ group :test do
   gem 'webdrivers'
   gem 'rails-controller-testing'
 end
-group :production, :development do 
+group :production, :development do
   #gem 'mysql2'
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.5.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
